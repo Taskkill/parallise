@@ -21,9 +21,9 @@ Tests will come soon.
 
 Example of usage:
 ```javascript
-  import getParallise from 'parallise';
+  import Parallise from 'parallise';
 
-  getParallise(function (resolve, reject) {
+  Parallise(function (resolve, reject) {
     console.log("inside worker promise");
     resolve(23);
     }
@@ -38,3 +38,5 @@ Example of usage:
 
 Main reason why you should choose this package is because it doesn't use native Worker creation.
 So you are not forced to configure you webpack/browserify to split bundle and server worker.js file separately.
+
+It depends on native Promises yet. I will add polyfill support lately.
