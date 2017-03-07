@@ -1,5 +1,3 @@
-import Promise from 'promise-polyfill';
-
 const buildFun = require('./worker').buildFun;
 const onmessage = require('./worker').onmessage;
 
