@@ -1,5 +1,5 @@
 # parallise
-Simple module of function returning promise executed parallely and chainable in main context.
+Simple module of one function returning Promise, which content is executed parallely in web-worker and chainable in main context.
 
 It's still in development.
 
