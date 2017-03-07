@@ -7,6 +7,10 @@ Main purpose is to create Promises in web-workers, thenable in main context.
 
 You should use it only in browser, since node does not provide Worker API. In this time, it has not been tested on node with fake Worker APIs.
 
+```bash
+npm install parallise
+```
+
 # It uses some specific APIs:
 
 Blob: https://developer.mozilla.org/en-US/docs/Web/API/Blob/Blob - I don't use it in workers so, don't worry about support.
