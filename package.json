@@ -1,6 +1,6 @@
 {
   "name": "parallise",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple module of function returning promise executed parallely and chainable in main context.",
   "main": "main.js",
   "scripts": {
