@@ -1,7 +1,10 @@
+'use strict';
+
 const buildFun = require('./worker').buildFun;
 const onmessage = require('./worker').onmessage;
 
 const source = `
+  'use strict';
   ${buildFun.toString()}
   this.onmessage = ${onmessage.toString()}
 `;
