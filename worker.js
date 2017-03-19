@@ -1,9 +1,10 @@
-exports.onmessage = function (message) {
+module.exports.onmessage = function (message) {
   const fun = buildFun(message.data.fun);
-  new Promise(fun).then(result => this.postMessage({result, success: true}), error => this.postMessage({error, success: false}));
+  const __this = message.data.__this;
+  fun.call(__this, result => this.postMessage({result, success: true}), error => this.postMessage({error, success: false}));
 }
 
-exports.buildFun = function buildFun(funString) {
+module.exports.buildFun = function buildFun(funString) {
   // TODO: tune up regexp
  const regexParams = new RegExp("\\({1}\\ *(.*\\ *,?){0,}\\){1}");
  const headF = funString.match(regexParams)[0];

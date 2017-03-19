@@ -34,9 +34,28 @@ Example of usage:
   console.log("this will execute before then");
 ```
 
+
+Now you can also specify your own this object, inside worker thread. Use it like this:
+```javascript
+  import Parallise from 'parallise';
+
+  Parallise(function (resolve, reject) {
+    console.log("inside worker promise");
+    resolve(this.multiplier * 23);
+    },
+    {multiplier: 4}
+  )
+  .then(result => {console.log(result); return result * 2})
+  .then(result => console.log(result));
+
+  console.log("this will execute before then");
+```
+
+
 # It's worker-less!
 
 Main reason why you should choose this package is because it doesn't use native Worker creation.
 So you are not forced to configure you webpack/browserify to split bundle and server worker.js file separately.
 
 It depends on native Promises yet. I will add polyfill support lately.
+Actualy just now, Promises are used only in main context/thread. Inside worker there very simply own logic.

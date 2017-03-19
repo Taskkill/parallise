@@ -13,7 +13,7 @@ const getWorkerURL = (script) => window.URL.createObjectURL(createTextFile(scrip
 
 const createTextFile = (content) => new Blob([content], {type: 'text/plain'});
 
-module.exports = (fun) => {
+module.exports = (fun, __this) => {
   const worker = new Worker(getWorkerURL(source));
 
   let __resolve;
@@ -24,7 +24,7 @@ module.exports = (fun) => {
     else __reject(message.data.error);
   }
 
-  worker.postMessage({fun: fun.toString(),});
+  worker.postMessage({fun: fun.toString(),  __this: __this,});
 
   return new Promise((resolve, reject) => {
     __resolve = resolve;
