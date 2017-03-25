@@ -52,6 +52,12 @@ Now you can also specify your own this object, inside worker thread. Use it like
 ```
 
 
+# Executed function
+Function expression which you are supplying into Parallise function should be old fashioned function expression.
+In this time it cannot parse and transform arrow function expressions, neither it can create async functions.
+As for arrow functions there is plan of implementation, async functions on the other hand will not be implemented, because it seems useless.
+
+
 # It's worker-less!
 
 Main reason why you should choose this package is because it doesn't use native Worker creation.

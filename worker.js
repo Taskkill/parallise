@@ -5,11 +5,10 @@ module.exports.onmessage = function (message) {
 }
 
 module.exports.buildFun = function buildFun(funString) {
-  // TODO: tune up regexp
- const regexParams = new RegExp("\\({1}\\ *(.*\\ *,?){0,}\\){1}");
- const headF = funString.match(regexParams)[0];
+ const regexParams = new RegExp('function\\s{0,}(\\w{1,})?\\s{0,}(\\((\\s{0,}\\w{0,}\\s{0,},?){0,}\\s{0,}\\))', 'm', 'g' );
+ const headF = funString.match(regexParams)[2];
  const paramsF = headF.substring(1, headF.length - 1);
  const parmsF = paramsF.split(",");
- const bodyF = funString.substring(funString.indexOf('{') + 1, funString.length - 2);
+ const bodyF = funString.substring(funString.indexOf('{') + 1, funString.lastIndexOf('}'));
  return new Function(parmsF, bodyF);
 }
