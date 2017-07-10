@@ -1,7 +1,16 @@
 'use strict';
 
-const buildFun = require('./worker').buildFun;
-const onmessage = require('./worker').onmessage;
+const buildFun = function buildFun(fnStr) {
+  let fn;
+  eval('fn = ' + fnStr);
+  return fn;
+}
+
+const onmessage = function (message) {
+  const fun = buildFun(message.data.fun);
+  const __this = message.data.__this;
+  fun.call(__this, result => this.postMessage({result, success: true}), error => this.postMessage({error, success: false}));
+}
 
 const source = `
   'use strict';
@@ -15,7 +24,7 @@ const createTextFile = (content) => new Blob([content], {
   type: 'text/plain'
 });
 
-module.exports = (fun, __this) => {
+window.Parallise = (fun, __this) => {
   const worker = new Worker(getWorkerURL(source));
 
   let __resolve;
