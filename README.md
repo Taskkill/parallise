@@ -28,7 +28,7 @@ Example of usage:
 ```javascript
   import Parallise from 'parallise';
   // or
-  var Parallise = require('parallise');
+  const Parallise = require('parallise');
 
   Parallise(function (resolve, reject) {
     console.log("inside worker promise");
@@ -46,7 +46,7 @@ Even use arrow functions and `new` keyword:
 ```javascript
   import Parallise from 'parallise';
   // or
-  var Parallise = require('parallise');
+  const Parallise = require('parallise');
 
   new Parallise((resolve, reject) => console.log("inside worker promise") || resolve(23))
   .then(result => {console.log(result); return result * 2})
@@ -60,7 +60,7 @@ Now you can also specify your own this object, inside worker thread. Use it like
 ```javascript
   import Parallise from 'parallise';
   // or
-  var Parallise = require('parallise');
+  const Parallise = require('parallise');
 
   Parallise(function (resolve, reject) {
     console.log("inside worker promise");
