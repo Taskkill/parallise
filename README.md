@@ -22,6 +22,8 @@ window.URL.createObjectURL() : https://developer.mozilla.org/en-US/docs/Web/API/
 
 Tests will come soon.
 
+## You can, but don't have to use `new Parallise`
+
 Example of usage:
 ```javascript
   import Parallise from 'parallise';
@@ -40,13 +42,13 @@ Example of usage:
 ```
 
 
-Even use arrow functions:
+Even use arrow functions and `new` keyword:
 ```javascript
   import Parallise from 'parallise';
   // or
   var Parallise = require('parallise');
 
-  Parallise((resolve, reject) => console.log("inside worker promise") || resolve(23))
+  new Parallise((resolve, reject) => console.log("inside worker promise") || resolve(23))
   .then(result => {console.log(result); return result * 2})
   .then(result => console.log(result));
 

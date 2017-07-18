@@ -5,6 +5,8 @@ const onmessage = require('./worker').onmessage;
 
 const source = `
   'use strict';
+  let iter;
+
   ${buildFun.toString()}
   this.onmessage = ${onmessage.toString()}
 `;
@@ -15,7 +17,7 @@ const createTextFile = (content) => new Blob([content], {
   type: 'text/plain'
 });
 
-module.exports = (fun, __this) => {
+module.exports = function Parallise (fun, __this) {
   const worker = new Worker(getWorkerURL(source));
 
   let __resolve;
