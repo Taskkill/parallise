@@ -2,7 +2,8 @@
   "name": "parallise",
   "version": "0.2.2",
   "description": "Promise executed parallely in worker and chainable/thenable in main context.",
-  "main": "main.js",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "scripts": {
     "test": "chromium tests/tests.html"
   },
